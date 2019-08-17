@@ -53,11 +53,7 @@
         var leftSpan = document.getElementById("left-text");
         var correctLetters = 0;
         var correctSpan = document.getElementById("correct-text");
-
-        //variable with their own functions
-        var Random = zooAnimals[Math.floor(Math.random() * zooAnimals.length)];
-        var pattern = Random.replace(/./g,"- ");
-
+  
         // var userInput = event.key;
         // Creating an onkey event to start the game
 
@@ -65,22 +61,22 @@
         // alert("pressed a button");
         // var userInput = event.key;
         // wordChosen.textContent = event.key;
+
+            var Random = zooAnimals[Math.floor(Math.random() * zooAnimals.length)];
+            var split= Random.replace(/./g,"- ");
            
-            // Changes wordChosen text to the word chosen at random   
             wordChosen.textContent = Random;
 
-            return Random
+            wordChosen.textContent = split;
+            // console.log(Random[3].split(""));
+            // console.log(Random.replace(/./g,"- "));
 
-            // Changes wordChosen text to the the pattern 
-            wordChosen.textContent = pattern;
-            
+            // console.log(Random);
+
+            // console.log(wordChosen.textContent = split)
+           
         }
-        // console.log(Random[3].split(""));
-        // console.log(Random.replace(/./g,"- "));
-
-        // console.log(Random);
-
-        // console.log(wordChosen.textContent = pattern)
+       
         
         
 
