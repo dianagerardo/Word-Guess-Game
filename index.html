@@ -18,10 +18,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
 
-    <!-- Adding my external style sheet -->
-    <link rel="stylesheet" href="Word-Guess-Game/assets/css/style.css">
-    <!-- Adding my reset sheet -->
-    <link rel="stylesheet" href="Word-Guess-Game/assets/css/reset.css">
+ 
 
 </head>
 
@@ -41,123 +38,51 @@
         <h2>Letters guessed correctly: <span id="correct-text"><strong>...Nothing.</strong></span></h2>
     </div>
 
-    <button onclick="wordGuessing.start(Math.floor(Math.random()* wordGuessing.zooAnimals.length)+1)" type="button"
-        class="btn btn-outline-primary">Start</button>
+    <!-- <button onclick="wordGuessing.start(Math.floor(Math.random()* wordGuessing.zooAnimals.length)+1)" type="button"
+    class="btn btn-outline-primary">Start</button> -->
 
     <script type=text/javascript> 
-    // This is my array of animals
+        // This is my array of animals
 
-    // All my variables that will change each text span
-    var wordChosen = document.getElementById("word-text");
-    var zooAnimals = ["giraffe", "monkey" , "zebra" , "lion","tiger" ];
-    var usedLetters = 0;
-    var usedSpan = document.getElementById("used-text");
-    var lettersLeft = 0;
-    var leftSpan = document.getElementById("left-text");
-    var correctLetters = 0;
-    var correctSpan = document.getElementById("correct-text");
+        // All my variables that will change each text span
+        var wordChosen = document.getElementById("word-text");
+        var zooAnimals = ["giraffe", "monkey" , "zebra" , "lion","tiger" ];
+        var usedLetters = 0;
+        var usedSpan = document.getElementById("used-text");
+        var lettersLeft = 0;
+        var leftSpan = document.getElementById("left-text");
+        var correctLetters = 0;
+        var correctSpan = document.getElementById("correct-text");
 
-    // var userInput = event.key;
-    // Creating an onkey event to start the game
-
-    document.onkeypress = function (event) {
-        // alert("pressed a button");
-        var userInput = event.key;
-        wordChosen.textContent = event.key;
+        //variable with their own functions
         var Random = zooAnimals[Math.floor(Math.random() * zooAnimals.length)];
-        wordChosen.textContent = Random;
+        var pattern = Random.replace(/./g,"- ");
 
-        console.log(Random);
-       
-    }
+        // var userInput = event.key;
+        // Creating an onkey event to start the game
 
-    // var wordGuessing ={ 
+        document.onkeypress = function (event) {
+        // alert("pressed a button");
+        // var userInput = event.key;
+        // wordChosen.textContent = event.key;
+           
+            // Changes wordChosen text to the word chosen at random   
+            wordChosen.textContent = Random;
 
-    //     document.onkeyup = function(event) {
-    //         userText.textContent = event.key;
-    //       };
+            return Random
 
-        
-    //     start: function (index) { 
-    //         console.log(document.getElementById("word-text").textContent);
-    //     document.getElementById("word-text").textContent=this.zooAnimals[index-1]
-    //     ;
+            // Changes wordChosen text to the the pattern 
+            wordChosen.textContent = pattern;
             
-    //         for(var i=0; i<word.length; i++){ this.patternCreator=this.patternCreator+"_ ";
-    //                 document.getElementById(" dashes").textContent=this.patternCreator=this.pattern+"_ "
-    //                 // return this.guessChoices[index - 1];
-    //                 console.log(this.patternCreator+" _ ")
+        }
+        // console.log(Random[3].split(""));
+        // console.log(Random.replace(/./g,"- "));
 
-    //                 return [this.guessChoices[dashes],this.pattern]
-    //             }
-                
-    //         }
+        // console.log(Random);
+
+        // console.log(wordChosen.textContent = pattern)
         
-    //     }
+        
 
     </script>
 </body>
-
-
-
-            <!DOCTYPE html>
-            <html lang="en-us">
-
-            <head>
-                <meta charset="UTF-8">
-                <title>Rock Paper Scissors Part 1</title>
-            </head>
-
-            <body>
-
-                <div id="game">
-                    <h2>You chose: <span id="user-text"><strong>...Nothing.</strong></span></h2>
-                    <h2>Computer chose: <span id="computer-text"><strong>...Nothing.</strong></span></h2>
-                    <h2>Wins: <span id="wins-text"><strong>...Nothing.</strong></span></h2>
-                    <h2>Losses: <span id="losses-text"><strong>...Nothing.</strong></span></h2>
-                    <h2>Ties: <span id="ties-text"><strong>...Nothing.</strong></span></h2>
-                </div>
-
-                <script type="text/javascript">
-                    // Whenever a key is pressed, alert "pressed a button".
-                    var userText = document.getElementById("user-text");
-                    var computerChoose = ["r", "p", "s"];
-                    var Computer = document.getElementById("computer-text");
-                    var Ties = 0;
-                    var tiesSpan = document.getElementById("ties-text");
-                    var Wins = 0;
-                    var winsSpan = document.getElementById("wins-text");
-                    var Losses = 0;
-                    var lossesSpan = document.getElementById("losses-text");
-                    // var userInput = event.key;
-
-                    document.onkeyup = function (event) {
-                        // alert("pressed a button");
-                        var userInput = event.key;
-                        userText.textContent = event.key;
-                        var Random = computerChoose[Math.floor(Math.random() * computerChoose.length)];
-                        Computer.textContent = Random;
-
-                        // console.log(Random);
-                        // console.log(userInput);
-                        // console.log(Ties);
-                        if (Random === userInput) {
-                            Ties++;
-                            tiesSpan.textContent = Ties;
-                        }
-                        else if ((Random == "s" && userInput == "p") || (Random == "p" && userInput == "r") || (Random == "r" && userInput == "s")) {
-                            Losses++;
-                            lossesSpan.textContent = Losses;
-
-                        }
-                        else if ((Random == "p" && userInput == "s") || (Random == "r" && userInput == "p") || (Random == "s" && userInput == "r")) {
-                            Wins++;
-                            winsSpan.textContent = Wins;
-                        }
-                    }
-
-                </script>
-
-            </body>
-
-            </html>
