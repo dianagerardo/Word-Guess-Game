@@ -66,8 +66,6 @@
                 <h2>Used letters: <span id="used-text"><strong>...Nothing.</strong></span></h2>
 
                 <h2>Letters guessed correctly: <span id="correct-text"><strong>...Nothing.</strong></span></h2>
-
-                <h2>Lives left: <span id="left-text"><strong>...Nothing.</strong></span></h2>
             </div>
         </div>
 
@@ -93,6 +91,8 @@
             var currentWord;
             var numLettersMatched;
             var messages;
+            var usedLetters =document.getElementById("used-text");
+            var correctLetters =document.getElementById("correct-text");
 
 
             function setup() {
@@ -114,15 +114,16 @@
                 /* choose a word */
                 currentWord = words[Math.floor(Math.random() * words.length)];
 
-                /* make #man and #output blank, create vars for later access */
+                /* make #messageBox and #output blank, create vars for later access */
                 output = document.getElementById("output");
                 messageBox = document.getElementById("messageBox");
                 guessInput = document.getElementById("letter");
-
+                
                 messageBox.innerHTML = 'You have ' + lives + ' lives remaining';
                 output.innerHTML = '';
 
                 document.getElementById("letter").value = '';
+                document.getElementById("used-text").value = '';
 
                 /* make sure guess button is enabled */
                 guessButton = document.getElementById("guess");
@@ -151,7 +152,9 @@
 
                 guessInput.style.display = guessButton.style.display = 'none';
                 guessInput.value = '';
+                usedLetters.value = '';
             }
+
 
             /* Start game - should ideally check for existing functions attached to window.onload */
             window.onload = setup();
@@ -163,6 +166,14 @@
             guessInput.onclick = function () {
                 this.value = '';
             };
+
+            /* reset letter categories */
+
+            usedLetters.onclick = function() {
+                this.value = '';
+            }
+
+
 
             /* main guess function when user clicks #guess */
             document.getElementById('zooGame').onsubmit = function (e) {
@@ -185,6 +196,9 @@
                             var lettersToShow;
                             lettersToShow = document.querySelectorAll(".letter" + guess.toUpperCase());
 
+                            // Add guessed letters to letters guessed correctly area
+                            correctLetters.textContent = guess;
+
                             for (var i = 0; i < lettersToShow.length; i++) {
                                 lettersToShow[i].classList.add("correct");
                             }
@@ -197,6 +211,7 @@
                             }
 
                             lettersMatched += guess;
+                            console.log(lettersMatched += guess)
                             if (numLettersMatched === currentWord.length) {
                                 gameOver(true);
                             }
@@ -206,6 +221,8 @@
                             lettersGuessed += guess;
                             lives--;
                             messageBox.innerHTML = 'You have ' + lives + ' lives remaining';
+                            usedLetters.textContent = lettersGuessed;
+
                             if (lives === 0) gameOver();
                         }
                     }
