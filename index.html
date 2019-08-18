@@ -24,18 +24,40 @@
 
 <body>
 
+    <div class="jumbotron">
+        <img src="https://cdn.iview.abc.net.au/thumbs/1200/zw/ZW0983A_5b0606d84f81b.jpg" alt="zoo" width="100%">
+        <h1 class="display-4">Start the Game!</h1>
+        <p class="lead">To start the game press the start button!</p>
+        <hr class="my-4">
+        <p>Rules of the game:<p>
+            <ul>
+            <li> Click on a key to try to guess a letter in the word.</li>
+            <li>If you guessed right, the letter will replace the dashes, and you will get a letter added to the "Letters guessed correctly" category.</li>
+            <li>If you guessed incorrectly, you will lose a life and the letter guessed will appear in the "letters used" category.</li>
+            <li>If you guess all the letters in the word before you lose all your lives, you win!</li>
+            </ul>
+      </div>
+      <button type="button" id="start-button" class="btn btn-info">Start</button>
+
+     
+      <div class="container">
+
+
     <div id="game">
 
         <!-- This is the title of my game -->
-        <h1 id="title">Start the game!</h1>
+        
         <!-- This is the area that will contain the word information -->
-        <h3>Guess the word!: <span id="word-text"><strong>Click on any key to start game!</strong></span></h3>
+        <h1>Guess the word!: <span id="word-text"><strong>Click on any key to start game!</strong></span></h1>
 
         <!-- This are shows the user the letters they have attempted -->
 
         <h2>Used letters: <span id="used-text"><strong>...Nothing.</strong></span></h2>
-        <h2>Letters left: <span id="left-text"><strong>...Nothing.</strong></span></h2>
+        
         <h2>Letters guessed correctly: <span id="correct-text"><strong>...Nothing.</strong></span></h2>
+
+        <h2>Lives left: <span id="left-text"><strong>...Nothing.</strong></span></h2>
+    </div>
     </div>
 
     <!-- <button onclick="wordGuessing.start(Math.floor(Math.random()* wordGuessing.zooAnimals.length)+1)" type="button"
@@ -49,36 +71,98 @@
         var zooAnimals = ["giraffe", "monkey" , "zebra" , "lion","tiger" ];
         var usedLetters = 0;
         var usedSpan = document.getElementById("used-text");
-        var lettersLeft = 0;
+        var livesLeft = 10;
         var leftSpan = document.getElementById("left-text");
         var correctLetters = 0;
         var correctSpan = document.getElementById("correct-text");
-  
+        var gameStart=false;
+        var startBtn = document.getElementById("start-button");
+       
         // var userInput = event.key;
         // Creating an onkey event to start the game
+        
+        startBtn.addEventListener("click", function(event) {
+            gameStart = !gameStart;
+            
 
-        document.onkeypress = function (event) {
-        // alert("pressed a button");
-        // var userInput = event.key;
-        // wordChosen.textContent = event.key;
+            if( gameStart == true ){
+                // game has begun
+                console.log("The game is running");
+
+                
+            // alert("pressed a button");
+            // var userInput = event.key;
+            // wordChosen.textContent = event.key;
+            // if game begins then stop giving me words
 
             var Random = zooAnimals[Math.floor(Math.random() * zooAnimals.length)];
+            var string =Random.split("");
             var split= Random.replace(/./g,"- ");
            
             wordChosen.textContent = Random;
 
             wordChosen.textContent = split;
-            // console.log(Random[3].split(""));
-            // console.log(Random.replace(/./g,"- "));
 
-            // console.log(Random);
+            console.log(Random.split(""));
+            console.log(Random.replace(/./g,"- "));
 
-            // console.log(wordChosen.textContent = split)
-           
-        }
-       
+            console.log(Random);
+
+            console.log(wordChosen.textContent = split);
+
+
+            }
+            
+
+            else if (gameStart == false) {
+                // game is not running
+                console.log("The game is not running");
+                // find a way to lock the word so it doesn't change every time the user presses the button, maybe disable the button and add a reset button 
+            }
+
+            else {
+                console.log("nothing");
+
+            }
+            
+
+            // function resetButton(event) {
+            //     start-button.
+            //     gameStart == false;
+
+            // }
+            
+            document.onkeypress = function(event) {
+                console.log("you pressed a key")
+                console.log(event.key);
+                console.log(string);
+
+                var userGuess = event.key;
+
+                console.log(userGuess);
+                
+                // Compare user's letter against letters in word
+                for (var i=0; i<string.length;i++){
+                if(string[i] == userGuess){
+                    console.log("match")
+                    
+                    
+                    correctSpan.textContent = userGuess;
+                    usedSpan.textContent = userGuess ;
+                    wordChosen.textContent = userGuess;
+                } 
+                if (string[i] !== userGuess) {
+                    console.log("not a match")
+                    usedSpan.textContent = userGuess ;
+                    leftSpan.textContent = livesLeft -1;
+                }
+                }
+            }
         
-        
+            
+        })
+
+            // document.onkeyup() = function(event) {
 
     </script>
 </body>

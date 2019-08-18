@@ -95,10 +95,17 @@ use document.onkeyup to get user input
 <!-- // We can either overwrite each element of the array to make it lowercase, or we can use the toLowerCase() method.
 drinks[0] = " coke"; drinks[1]="pepsi" ; drinks[2]="water" ; drinks[3]=drinks[3].toLowerCase(); // Logging our new
         array to the console. console.log("Second statement"); console.log(drinks[0]); console.log(drinks[1]);
-        console.log(drinks[2]); console.log(drinks[3]); OR public class Program { public static void main(String[] args)
+        console.log(drinks[2]); console.log(drinks[3]); 
+        
+        
+        OR 
+        
+        public class Program { public static void main(String[] args)
         { String value="java" ; char[] array=value.toCharArray(); // Convert string to a char array. for(int i=0; i <
         value.length(); i++) { array[i]='-' ; } // Loop over chars in the array. for (char c : array) {
-        System.out.print(c); } } } Check each letter the user picks against the word -->
+        System.out.print(c); } } } 
+        
+        Check each letter the user picks against the word -->
 
         // This is our starting myFarm array.
         var myFarm = ["chickens", "pigs", "cows", "horses", "ostriches"];
