@@ -86,6 +86,16 @@
             
 
             if( gameStart == true ){
+
+            var Random = zooAnimals[Math.floor(Math.random() * zooAnimals.length)];
+            var string =Random.split("");
+            var split= Random.replace(/./g,"- ");
+            var remainingLetters = Random.length;
+            var answerArray = [];
+
+            // while (Random.length > 0) {
+ 
+ 
                 // game has begun
                 console.log("The game is running");
 
@@ -95,9 +105,8 @@
             // wordChosen.textContent = event.key;
             // if game begins then stop giving me words
 
-            var Random = zooAnimals[Math.floor(Math.random() * zooAnimals.length)];
-            var string =Random.split("");
-            var split= Random.replace(/./g,"- ");
+            
+            // var split = Arrays.fill(Random, '_');
            
             wordChosen.textContent = Random;
 
@@ -112,6 +121,7 @@
 
 
             }
+            
             
 
             else if (gameStart == false) {
@@ -139,28 +149,38 @@
 
                 var userGuess = event.key;
 
+                answerArray.push(userGuess);
+
                 console.log(userGuess);
                 
                 // Compare user's letter against letters in word
                 for (var i=0; i<string.length;i++){
-                if(string[i] == userGuess){
-                    console.log("match")
+                if(Random[i] == userGuess){
+                    console.log("match");
                     
                     
                     correctSpan.textContent = userGuess;
-                    usedSpan.textContent = userGuess ;
+                    
+                    usedSpan.textContent = answerArray;
+                    
                     wordChosen.textContent = userGuess;
+                    
                 } 
                 if (string[i] !== userGuess) {
                     console.log("not a match")
-                    usedSpan.textContent = userGuess ;
+                    usedSpan.textContent = answerArray ;
                     leftSpan.textContent = livesLeft -1;
                 }
                 }
-            }
-        
+            // }
             
-        })
+            
+        }
+        });
+        
+        
+
+        
 
             // document.onkeyup() = function(event) {
 
