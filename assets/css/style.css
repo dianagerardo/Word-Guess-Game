@@ -1,0 +1,84 @@
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .game {
+            text-align: center;
+
+        }
+
+        h1 {
+            padding-bottom: 2%;
+            color: cadetblue;
+            font-weight: bold;
+            font-size: 45px;
+        }
+
+        .display-4 {
+            text-align: center;
+        }
+
+        p {
+            padding-bottom: 1%;
+        }
+
+        li {
+            padding-bottom: 1%;
+        }
+
+        form {
+            padding-bottom: 2%;
+        }
+
+        #messageBox {
+            padding-top: 2%;
+        }
+
+        h2 {
+            padding-bottom: 2%;
+        }
+
+        .letter {
+            display: inline-block;
+            list-style: none;
+            width: 20px;
+            margin: 0 5px;
+            border-bottom: 1px solid black;
+            text-align: center;
+            color: white;
+        }
+
+        .current-word {
+            list-style: none;
+        }
+
+        .output {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .correct {
+            background-color: black;
+            transition: all 1s ease;
+        }
+
+        .error {
+            color: red;
+            opacity: 1;
+        }
+
+        .warning {
+            color: orange;
+            opacity: 1;
+        }
+
+        .win {
+            color: aqua;
+            opacity: 1;
+        }
+
